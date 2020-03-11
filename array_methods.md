@@ -230,6 +230,157 @@ arr5.flat();
 // [1, 2, 4, 5]
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* 
+    10.Array.flatMap()
+    var new_array = arr.flatMap(function callback(currentValue[, index[, array]]) {
+    // return element for new_array
+    }[, thisArg])
+
+    Details:The flatMap() method first maps each element using a mapping function, then flattens the result into a new array. It is identical to a map() followed by a flat() of depth 1, but flatMap() is often quite useful, as merging both into one method is slightly more efficient.
+   
+
+*/
+
+// map() and flatMap()
+let arr1 = [1, 2, 3, 4];
+
+arr1.map(x => [x * 2]); 
+// [[2], [4], [6], [8]]
+
+arr1.flatMap(x => [x * 2]);
+// [2, 4, 6, 8]
+
+// only one level is flattened
+arr1.flatMap(x => [[x * 2]]);
+// [[2], [4], [6], [8]]
+
+
+// FlatMap
+let arr1 = ["it's Sunny in", "", "California"];
+
+arr1.map(x => x.split(" "));
+// [["it's","Sunny","in"],[""],["California"]]
+
+arr1.flatMap(x => x.split(" "));
+// ["it's","Sunny","in", "", "California"]
+/////////////////////////////////////////////////////////////////////
+
+
+/* 
+    11.Array.forEach()
+    -- arr.forEach(callback(currentValue [, index [, array]])[, thisArg]) -- 
+
+    Details:
+    The forEach() method executes a provided function once for each array element.
+*/
+
+//No operation for uninitialized values (sparse arrays)
+const arraySparse = [1,3,,7]
+let numCallbackRuns = 0
+
+arraySparse.forEach((element) => {
+  console.log(element)
+  numCallbackRuns++
+})
+
+console.log("numCallbackRuns: ", numCallbackRuns)
+
+// 1
+// 3
+// 7
+// numCallbackRuns: 3
+// comment: as you can see the missing value between 3 and 7 didn't invoke callback function.
+
+
+// Converting a for loop to forEach
+const items = ['item1', 'item2', 'item3']
+const copy = []
+
+// before
+for (let i = 0; i < items.length; i++) {
+  copy.push(items[i])
+}
+
+// after
+items.forEach(function(item){
+  copy.push(item)
+})
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/* 
+    12.Array.includes()
+    -- arr.includes(valueToFind[, fromIndex]) -- 
+
+    Details:
+    The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+*/
+
+const array1 = [1, 2, 3];
+
+console.log(array1.includes(2));
+// expected output: true
+
+const pets = ['cat', 'dog', 'bat'];
+
+console.log(pets.includes('cat'));
+// expected output: true
+
+console.log(pets.includes('at'));
+// expected output: false
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* 
+    13.Array.indexOf()
+    -- arr.indexOf(searchElement[, fromIndex]) -- 
+
+    Details:
+    The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+*/
+
+const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+console.log(beasts.indexOf('bison'));
+// expected output: 1
+
+// start from index 2
+console.log(beasts.indexOf('bison', 2));
+// expected output: 4
+
+console.log(beasts.indexOf('giraffe'));
+// expected output: -1
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* 
+    14.Array.join()
+    -- arr.join([separator]) -- 
+
+    Details:
+    The join() method creates and returns a new string by concatenating all of the elements in an array (or an array-like object), separated by commas or a specified separator string. If the array has only one item, then that item will be returned without using the separator.
+*/
+
+const elements = ['Fire', 'Air', 'Water'];
+
+console.log(elements.join());
+// expected output: "Fire,Air,Water"
+
+console.log(elements.join(''));
+// expected output: "FireAirWater"
+
+console.log(elements.join('-'));
+// expected output: "Fire-Air-Water"
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ```
 
 
